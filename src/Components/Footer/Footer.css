@@ -1,0 +1,149 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo p {
+    color: #383838;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+    list-style: none;
+    gap: 50px;
+    color: #252525;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+.footer-links li {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.footer-links li:hover {
+    color: #ff141f;
+}
+
+.footer-social-icon {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-icon-container {
+    padding: 10px;
+    padding-bottom: 6px;
+    background: #fbfbfb;
+    border: 1px solid #ebebeb;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.footer-icon-container:hover {
+    transform: scale(1.1);
+}
+
+.footer-copieright {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+    font-size: 20px;
+}
+
+.footer-copieright hr {
+    width: 80%;
+    border: none;
+    border-radius: 10px;
+    height: 3px;
+    background: #cfcfcf;
+}
+
+@media(max-width: 800px) {
+    .footer {
+        gap: 20px;
+    }
+
+    .footer-logo {
+        gap: 10px;
+        align-items: end;
+    }
+
+    .footer-logo img {
+        width: 40px;
+    }
+
+    .footer-logo p {
+        font-size: 25px;
+    }
+
+    .footer-links {
+        gap: 20px;
+        font-size: 16px;
+    }
+
+    .footer-social-icon img {
+        width: 22px;
+    }
+
+    .footer-copieright {
+        font-size: 13px;
+    }
+}
+
+@media(max-width: 500px) {
+    .footer {
+        gap: 10px;
+    }
+
+    .footer-logo {
+        gap: 5px;
+    }
+
+    .footer-logo img {
+        width: 30px;
+    }
+
+    .footer-logo p {
+        font-size: 20px;
+    }
+
+    .footer-links {
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        font-size: 14px;
+    }
+
+    .footer-social-icon {
+        gap: 10px;
+    }
+
+    .footer-social-icon img {
+        width: 20px;
+    }
+
+    .footer-copieright {
+        font-size: 12px;
+    }
+}

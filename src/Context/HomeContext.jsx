@@ -21,16 +21,17 @@ export const HomeProvider = (props) => {
       .catch((error) => console.error('Error fetching products:', error))
 
       if(localStorage.getItem('auth-token')){
-        fetch('https://zefefrpdoors-backend.onrender.com/getcart',{
-          method:'POST',
-          headers:{
-            Accept: 'application/form-data',
-            'auth-token':`${localStorage.getItem('auth-token')}`,
-            'Content-Type':'application/json',
+        fetch('https://zefefrpdoors-backend.onrender.com/getcart', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'auth-token': `${localStorage.getItem('auth-token')}`,
+            'Content-Type': 'application/json',
           },
-          body:"",
-        }).then((response)=>response.json())
-        .then((data)=>setCartItems(data));
+        })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error('Error:', error));
       }
   }, []);
 

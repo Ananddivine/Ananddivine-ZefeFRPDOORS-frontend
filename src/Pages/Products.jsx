@@ -9,7 +9,7 @@ const Products = () => {
     const [popularProducts,setPopularProducts] = useState([]);
 
   useEffect(()=>{
-    fetch('http://localhost:4000/newcollections')
+    fetch('https://zefefrpdoors-backend.onrender.com/newcollections')
     .then((response)=>response.json())
     .then((data)=>setNew_collections(data));
   },[])
@@ -17,7 +17,7 @@ const Products = () => {
 
 
   useEffect(()=>{
-    fetch('http://localhost:4000/populerinshop')
+    fetch('https://zefefrpdoors-backend.onrender.com/populerinshop')
     .then((response)=>response.json())
     .then((data)=>setPopularProducts(data));
   },[])

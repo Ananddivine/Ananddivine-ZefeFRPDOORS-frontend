@@ -1,16 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Popular.css';
 import Item from '../Item/Item';
 
 const Popular = () => {
-  const [popularProducts,setPopularProducts] = useState([]);
+  const [popularProducts, setPopularProducts] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch('https://zefefrpdoors-backend.onrender.com/populerinshop')
-    .then((response)=>response.json())
-    .then((data)=>setPopularProducts(data));
-  },[])
-
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => setPopularProducts(data))
+      .catch(error => console.error('Error fetching popular products:', error));
+  }, []);
 
   return (
     <div className="popular">

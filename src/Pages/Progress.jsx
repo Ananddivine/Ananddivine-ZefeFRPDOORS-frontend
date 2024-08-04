@@ -27,7 +27,7 @@ const Progress = () => {
         navigate('/loginsignup');
         return;
       }
-      const response = await fetch('https://zefefrpdoors-backend.onrender.com/user-details', {
+      const response = await fetch('http://localhost:4000/user-details', {
         headers: { 'auth-token': authToken }
       });
       const userData = await response.json();

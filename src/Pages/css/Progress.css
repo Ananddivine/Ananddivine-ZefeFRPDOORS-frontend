@@ -1,0 +1,122 @@
+/* Progress.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .progress-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .order-details {
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .order-details div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 1280px) {
+    .progress-container {
+      padding: 15px;
+    }
+  
+    form {
+      max-width: 80%;
+    }
+  
+    .order-details {
+      max-width: 80%;
+    }
+  }
+  
+  @media (max-width: 1020px) {
+    .progress-container {
+      padding: 10px;
+    }
+  
+    form {
+      max-width: 90%;
+    }
+  
+    .order-details {
+      max-width: 90%;
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .progress-container {
+      padding: 10px;
+    }
+  
+    form {
+      max-width: 95%;
+    }
+  
+    .order-details {
+      max-width: 95%;
+    }
+  
+    input, button {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .progress-container {
+      padding: 5px;
+    }
+  
+    form {
+      max-width: 100%;
+    }
+  
+    .order-details {
+      max-width: 100%;
+    }
+  
+    input, button {
+      font-size: 12px;
+      padding: 8px;
+    }
+  }
+  

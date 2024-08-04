@@ -11,6 +11,7 @@ import LoginSignup from './Pages/LoginSignup';
 import Footer from './Components/Footer/Footer';
 import kid_banner from './Components/Assets/banner_kids.png';
 import Products from './Pages/Products';
+import Progress from './Pages/Progress';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           </Route>
           <Route path='/cart' element={<Cart />} />
           <Route path='/loginsignup' element={<LoginSignup />} />
+          <Route path='/progress' element={<Progress />}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

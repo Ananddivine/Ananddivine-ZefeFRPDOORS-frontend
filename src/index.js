@@ -1,11 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'; // Note the change here
 import App from './App';
 import { HomeProvider } from './Context/HomeContext';
 
-ReactDOM.render(
-  <HomeProvider>
-    <App />
-  </HomeProvider>,
-  document.getElementById('root')
+// Create a root
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Render the application
+root.render(
+  <React.StrictMode>
+    <HomeProvider>
+      <App />
+    </HomeProvider>
+  </React.StrictMode>
 );

@@ -18,21 +18,24 @@ export const HomeProvider = (props) => {
     fetch('https://zefefrpdoors-backend.onrender.com/allproducts')
       .then((response) => response.json())
       .then((data) => setAll_Product(data))
-      .catch((error) => console.error('Error fetching products:', error))
+      .catch((error) => console.error('Error fetching products:', error));
 
-      if(localStorage.getItem('auth-token')){
-        fetch('https://zefefrpdoors-backend.onrender.com/getcart', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'auth-token': `${localStorage.getItem('auth-token')}`,
-            'Content-Type': 'application/json',
-          },
-        })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error('Error:', error));
-      }
+    if (localStorage.getItem('auth-token')) {
+      fetch('https://zefefrpdoors-backend.onrender.com/getcart', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'auth-token': `${localStorage.getItem('auth-token')}`,
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        setCartItems(data); // Update the cartItems state with fetched data
+        console.log(data);
+      })
+      .catch((error) => console.error('Error:', error));
+    }
   }, []);
 
   const addToCart = (itemId) => {
@@ -54,7 +57,6 @@ export const HomeProvider = (props) => {
   };
 
   const removeFromCart = (itemId) => {
-    console.log('Attempting to remove item from cart:', itemId);
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
     if (localStorage.getItem('auth-token')) {
       fetch('https://zefefrpdoors-backend.onrender.com/removecartitem', {
@@ -66,13 +68,8 @@ export const HomeProvider = (props) => {
         },
         body: JSON.stringify({ item: itemId }),
       })
-        .then((response) => {
-          if (!response.ok) {
-            return response.text(); // Read response as text if it's not ok
-          }
-          return response.json(); // Parse as JSON if it's ok
-        })
-        .then((data) => console.log('Backend response:', data))
+        .then((response) => response.json())
+        .then((data) => console.log(data))
         .catch((error) => console.error('Error:', error));
     }  
   };
@@ -97,6 +94,7 @@ export const HomeProvider = (props) => {
     }
     return totalItem;
   };
+  
 
   const ContextValue = {
     getTotalCartItems,

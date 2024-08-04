@@ -7,25 +7,25 @@ import Discriptionbox from '../Components/Discriptionbox/Discriptionbox';
 import Relatedproduct from '../Components/RelatedProduct/Relatedproduct';
 
 const Product = () => {
-  const { all_product } = useContext(HomeContext);
-  const { productId } = useParams();
-  console.log('all_product:', all_product);
-  console.log('productId:', productId);
-  const product = all_product.find((e) => e.id === Number(productId));
-  console.log('product:', product);
+    const { all_product } = useContext(HomeContext);
+    const { productId } = useParams();
+    console.log('all_product:', all_product);
+    console.log('productId:', productId);
+    const product = all_product.find((e) => e.id === Number(productId));
+    console.log('product:', product);
 
-  if (!product) {
-    return <div>Product not found</div>;
-  }
+    if (!product) {
+        return <div>Product not found</div>;
+    }
 
-  return (
-    <div>
-      <Breadcrum product={product} />
-      <Productdisply product={product}/>
-      <Discriptionbox />
-      <Relatedproduct />
-    </div>
-  );
+    return (
+        <div>
+            <Breadcrum product={product} />
+            <Productdisply product={product}/>
+            <Discriptionbox description={product.description} />
+            <Relatedproduct />
+        </div>
+    );
 };
 
 export default Product;

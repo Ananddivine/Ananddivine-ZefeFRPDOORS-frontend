@@ -295,3 +295,13 @@ width: 15px;
         font-size: 16px;
     }
 }
+
+
+.read-discription{
+    background: #383838!important;
+    padding: 5px!important;
+    font-size: 16px!important;
+}
+.read-discription:hover{
+    background: #656565!important;
+}

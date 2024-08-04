@@ -16,73 +16,70 @@ export const HomeProvider = (props) => {
 
   useEffect(() => {
     fetch('https://zefefrpdoors-backend.onrender.com/allproducts')
-      .then(response => response.json())
-      .then(data => setAll_Product(data))
-      .catch(error => console.error('Error fetching products:', error));
+      .then((response) => response.json())
+      .then((data) => setAll_Product(data))
+      .catch((error) => console.error('Error fetching products:', error));
 
-    const token = localStorage.getItem('auth-token');
-    if (token) {
+    if (localStorage.getItem('auth-token')) {
       fetch('https://zefefrpdoors-backend.onrender.com/getcart', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'auth-token': token,
+          'auth-token': `${localStorage.getItem('auth-token')}`,
           'Content-Type': 'application/json',
         },
       })
-      .then(response => response.json())
-      .then(data => {
-        setCartItems(data);
+      .then((response) => response.json())
+      .then((data) => {
+        setCartItems(data); // Update the cartItems state with fetched data
         console.log(data);
       })
-      .catch(error => console.error('Error fetching cart items:', error));
+      .catch((error) => console.error('Error:', error));
     }
   }, []);
 
   const addToCart = (itemId) => {
-    setCartItems(prev => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    const token = localStorage.getItem('auth-token');
-    if (token) {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    if (localStorage.getItem('auth-token')) {
       fetch('https://zefefrpdoors-backend.onrender.com/addtocart', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'auth-token': token,
+          'auth-token': localStorage.getItem('auth-token'),
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ item: itemId }),
       })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error adding to cart:', error));
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error('Error:', error));
     }
   };
 
   const removeFromCart = (itemId) => {
-    setCartItems(prev => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-    const token = localStorage.getItem('auth-token');
-    if (token) {
+    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+    if (localStorage.getItem('auth-token')) {
       fetch('https://zefefrpdoors-backend.onrender.com/removecartitem', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
-          'auth-token': token,
+          'auth-token': localStorage.getItem('auth-token'),
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ item: itemId }),
       })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error removing from cart:', error));
-    }
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error('Error:', error));
+    }  
   };
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = all_product.find(product => product.id === Number(item));
-        totalAmount += (itemInfo?.new_price || 0) * cartItems[item];
+        let itemInfo = all_product.find((product) => product.id === Number(item));
+        totalAmount += itemInfo.new_price * cartItems[item];
       }
     }
     return totalAmount;
@@ -97,6 +94,7 @@ export const HomeProvider = (props) => {
     }
     return totalItem;
   };
+  
 
   const ContextValue = {
     getTotalCartItems,

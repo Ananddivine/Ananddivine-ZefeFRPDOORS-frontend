@@ -1,5 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
+
 export const HomeContext = createContext();
+
 const getDefaultCart = () => {
   let cart = {};
   for (let index = 0; index <= 300; index++) {
@@ -13,11 +15,21 @@ export const HomeProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
+    // Fetch all products
     fetch('https://zefefrpdoors-backend.onrender.com/allproducts')
-      .then((response) => response.json())
-      .then((data) => setAll_Product(data))
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('Fetched products:', data);
+        setAll_Product(data);
+      })
       .catch((error) => console.error('Error fetching products:', error));
 
+    // Fetch cart items if the user is authenticated
     if (localStorage.getItem('auth-token')) {
       fetch('https://zefefrpdoors-backend.onrender.com/getcart', {
         method: 'POST',
@@ -27,12 +39,12 @@ export const HomeProvider = (props) => {
           'Content-Type': 'application/json',
         },
       })
-      .then((response) => response.json())
-      .then((data) => {
-        setCartItems(data); // Update the cartItems state with fetched data
-        console.log(data);
-      })
-      .catch((error) => console.error('Error:', error));
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Fetched cart items:', data);
+          setCartItems(data); // Update the cartItems state with fetched data
+        })
+        .catch((error) => console.error('Error fetching cart items:', error));
     }
   }, []);
 
@@ -49,8 +61,8 @@ export const HomeProvider = (props) => {
         body: JSON.stringify({ item: itemId }),
       })
         .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error('Error:', error));
+        .then((data) => console.log('Item added to cart:', data))
+        .catch((error) => console.error('Error adding item to cart:', error));
     }
   };
 
@@ -67,19 +79,29 @@ export const HomeProvider = (props) => {
         body: JSON.stringify({ item: itemId }),
       })
         .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.error('Error:', error));
-    }  
+        .then((data) => console.log('Item removed from cart:', data))
+        .catch((error) => console.error('Error removing item from cart:', error));
+    }
   };
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
+
+    if (all_product.length === 0) {
+      return totalAmount; // If products are not loaded yet, return 0
+    }
+
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
         let itemInfo = all_product.find((product) => product.id === Number(item));
-        totalAmount += itemInfo.new_price * cartItems[item];
+        if (itemInfo) {
+          totalAmount += itemInfo.new_price * cartItems[item];
+        } else {
+          console.error(`Product with ID ${item} not found`);
+        }
       }
     }
+
     return totalAmount;
   };
 
@@ -92,7 +114,6 @@ export const HomeProvider = (props) => {
     }
     return totalItem;
   };
-  
 
   const ContextValue = {
     getTotalCartItems,

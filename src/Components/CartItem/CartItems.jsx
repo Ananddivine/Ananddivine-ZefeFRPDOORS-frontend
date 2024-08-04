@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './CartItems.css';
 import { HomeContext } from '../../Context/HomeContext';
@@ -19,8 +19,12 @@ const CartItems = () => {
     localStorage.setItem('checkout-products', JSON.stringify(products));
     navigate('/progress');
   };
-  
-  
+
+  const totalCartAmount = useMemo(() => getTotalCartAmount(), [cartItems, all_product]);
+
+  if (all_product.length === 0 || Object.keys(cartItems).length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className='CartItems'>
@@ -43,7 +47,7 @@ const CartItems = () => {
                 <p>${e.new_price}</p>
                 <button className='cartitems-quantitiy'>{cartItems[e.id]}</button>
                 <p>${e.new_price * cartItems[e.id]}</p>
-                <img className='cartitem-remove-icon' src={remove_icon} onClick={() => { removeFromCart(e.id) }} alt="" />
+                <img className='cartitem-remove-icon' src={remove_icon} onClick={() => removeFromCart(e.id)} alt="" />
               </div>
               <hr />
             </div>
@@ -57,7 +61,7 @@ const CartItems = () => {
           <div>
             <div className="cartitem-total-item">
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              <p>${totalCartAmount}</p>
             </div>
             <div className='cartitem-total-item'>
               <p>Shipping Fee</p>
@@ -65,7 +69,7 @@ const CartItems = () => {
             </div>
             <div className='cartitem-total-item'>
               <h3>Total</h3>
-              <h3>${getTotalCartAmount()}</h3>
+              <h3>${totalCartAmount}</h3>
             </div>
           </div>
           <button onClick={handleCheckout}>Proceed to checkout</button>

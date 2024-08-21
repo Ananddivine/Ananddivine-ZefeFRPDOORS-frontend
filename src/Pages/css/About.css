@@ -1,0 +1,52 @@
+.About-continer-body{
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.573), rgba(0, 0, 0, 0.547)), url('../../Components/Assets/bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.about-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    
+  }
+  .about-container p{
+    color: #ffff;
+  }
+  
+  .text-slide {
+    animation: slideIn 1s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .contact-details {
+    margin-top: 20px;
+  }
+  
+  .contact-details h3 {
+    font-size: 1.5em;
+  }
+  
+  .contact-details p {
+    margin: 5px 0;
+  }
+  
+  .contact-details a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .contact-details a:hover {
+    text-decoration: underline;
+  }
+  

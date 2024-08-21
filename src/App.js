@@ -9,9 +9,10 @@ import ShopCategory from './Pages/ShopCategory';
 import Cart from './Pages/Cart';
 import LoginSignup from './Pages/LoginSignup';
 import Footer from './Components/Footer/Footer';
-import kid_banner from './Components/Assets/banner_kids.png';
 import Products from './Pages/Products';
 import Progress from './Pages/Progress';
+import Location from './Pages/Location';
+
 
 function App() {
   return (
@@ -22,8 +23,11 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/About' element={<About />} />
           <Route path='/Products' element={<Products />} />
+          <Route path='/location' element={<Location />} />
           <Route path='/Contact' element={<Contact />} />
-          <Route path='/Shop' element={<ShopCategory banner={kid_banner} category="shop"/>}/>
+          <Route path='/Shop' element={<ShopCategory category="shop"/>}/>
+          <Route path='/Pvc' element={<ShopCategory category="pvc"/>}/>
+          <Route path='/Upvc' element={<ShopCategory category="upvc"/>}/>
           <Route path='/product' element={<Product/>}>
             <Route path=":productId" element={<Product />} />
           </Route>

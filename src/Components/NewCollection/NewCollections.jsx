@@ -15,7 +15,7 @@ const NewCollections = () => {
     <div className="new-collections">
       <h1>New Collections</h1>    
       <hr/>
-      <div className="collections">
+      <div className="collections-item">
         {new_collection.map((item, i) => (
           <Item 
             key={i} 

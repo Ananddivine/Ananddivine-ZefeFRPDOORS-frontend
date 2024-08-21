@@ -1,0 +1,58 @@
+.skeleton-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+  }
+  
+  .skeleton-image {
+    width: 100%;
+    height: 150px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skeleton-text {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .skeleton-title {
+    width: 80%;
+  }
+  
+  .skeleton-price {
+    width: 60%;
+  }
+  
+  /* Shimmer Effect */
+  .skeleton-item::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  

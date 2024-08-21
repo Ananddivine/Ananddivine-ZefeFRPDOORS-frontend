@@ -1,16 +1,20 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import './Productdisply.css';
 import star_icon from '../Assets/star_icon.png';
 import star_dull_icon from '../Assets/star_dull_icon.png';
-import { HomeContext } from '../../Context/HomeContext';
+import { useNavigate } from 'react-router-dom';
 
 const Productdisply = (props) => {
     const { product } = props;
-    const { addToCart } = useContext(HomeContext);
     const [showFullDescription, setShowFullDescription] = useState(false);
+    const navigate = useNavigate();
 
     const toggleDescription = () => {
         setShowFullDescription(!showFullDescription);
+    };
+
+    const handleRedirect = () => {
+        navigate('/location'); // Replace with the correct path to your location.jsx
     };
 
     // Ensure product.description is defined
@@ -40,8 +44,8 @@ const Productdisply = (props) => {
                     <p>(132)</p>
                 </div>
                 <div className="productdisplay-right-prices">
-                    <div className="productdisplay-right-prices-old">${product.old_price}</div>
-                    <div className="productdisplay-right-prices-new">${product.new_price}</div>
+                    <div className="productdisplay-right-prices-old">{product.old_price}</div>
+                    <div className="productdisplay-right-prices-new">{product.new_price}</div>
                 </div>
                 <div className="productdisplay-right-discription">
                     <p>
@@ -57,7 +61,10 @@ const Productdisply = (props) => {
                         </button>
                     )}
                 </div>
-                <button onClick={() => { addToCart(product.id) }}>ADD TO CART</button>
+                <p className="productdisplay-nearby-shop">
+                    Get Nearby Shop
+                    <button onClick={handleRedirect}>Click Here</button>
+                </p>
                 <p className="productdisplay-right-category"><span>Category :</span> {product.category}</p>
             </div>
         </div>

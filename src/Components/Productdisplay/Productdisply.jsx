@@ -14,7 +14,7 @@ const Productdisply = (props) => {
     };
 
     const handleRedirect = () => {
-        navigate('/location'); // Replace with the correct path to your location.jsx
+        navigate('/location'); 
     };
 
     // Ensure product.description is defined

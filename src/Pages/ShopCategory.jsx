@@ -3,9 +3,15 @@ import './css/ShopCategory.css'
 import { HomeContext } from '../Context/HomeContext' 
 import dropdown_icon from '../Components/Assets/dropdown_icon.png'
 import Item from '../Components/Item/Item'
+import { useNavigate } from 'react-router-dom'
 
 const ShopCategory = (props) => {  
   const {all_product} = useContext(HomeContext)
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    navigate('/products')
+  }
   return (
     <div className="shop-category">
       <img className='shop-categrory-banner' src={props.banner} alt=''/> 
@@ -27,7 +33,7 @@ const ShopCategory = (props) => {
           }
         })}
       </div>
-      <div className="shopcategory-loadmore">
+      <div onClick={handleRedirect} className="shopcategory-loadmore">
         Explore More
       </div>
     </div>

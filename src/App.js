@@ -12,6 +12,9 @@ import Footer from './Components/Footer/Footer';
 import Products from './Pages/Products';
 import Progress from './Pages/Progress';
 import Location from './Pages/Location';
+import Doors from './Components/Doors/Doors';
+import Windows from './Components/Windows/Windows';
+import FloatingWhatsAppButton from './Components/FloatingWhatsAppButton/FloatingWhatsApp';
 
 
 function App() {
@@ -19,7 +22,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Navbar />
-        <Routes>
+          <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/About' element={<About />} />
           <Route path='/Products' element={<Products />} />
@@ -28,6 +31,8 @@ function App() {
           <Route path='/Shop' element={<ShopCategory category="shop"/>}/>
           <Route path='/Pvc' element={<ShopCategory category="pvc"/>}/>
           <Route path='/Upvc' element={<ShopCategory category="upvc"/>}/>
+          <Route path='/doors' element={<Doors />} />
+          <Route path='/windows' element={<Windows />} />
           <Route path='/product' element={<Product/>}>
             <Route path=":productId" element={<Product />} />
           </Route>
@@ -35,6 +40,7 @@ function App() {
           <Route path='/loginsignup' element={<LoginSignup />} />
           <Route path='/progress' element={<Progress />}/>
         </Routes>
+        <FloatingWhatsAppButton />
         <Footer/>
       </BrowserRouter>
     </div>

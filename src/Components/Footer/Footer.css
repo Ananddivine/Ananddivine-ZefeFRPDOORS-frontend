@@ -155,3 +155,10 @@
         font-size: 12px;
     }
 }
+.footer a{
+    text-decoration: none;
+    color: #1a1a1a;
+}
+.footer a:hover{
+    color: #fb5e5efb;
+}

@@ -29,23 +29,23 @@ export const HomeProvider = (props) => {
       })
       .catch((error) => console.error('Error fetching products:', error));
 
-    // Fetch cart items if the user is authenticated
-    if (localStorage.getItem('auth-token')) {
-      fetch('https://zefefrpdoors-backend.onrender.com/getcart', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'auth-token': `${localStorage.getItem('auth-token')}`,
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log('Fetched cart items:', data);
-          setCartItems(data); // Update the cartItems state with fetched data
-        })
-        .catch((error) => console.error('Error fetching cart items:', error));
-    }
+  // // Fetch cart items if the user is authenticated
+  //   if (localStorage.getItem('auth-token')) {
+  //     fetch('https://zefefrpdoors-backend.onrender.com/getcart', {
+  //       method: 'POST',
+  //       headers: {
+  //         Accept: 'application/json',
+  //         'auth-token': `${localStorage.getItem('auth-token')}`,
+  //         'Content-Type': 'application/json',
+  //       },
+  //     })
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         console.log('Fetched cart items:', data);
+  //         setCartItems(data); // Update the cartItems state with fetched data
+  //       })
+  //       .catch((error) => console.error('Error fetching cart items:', error));
+  //   }
   }, []);
 
   const addToCart = (itemId) => {

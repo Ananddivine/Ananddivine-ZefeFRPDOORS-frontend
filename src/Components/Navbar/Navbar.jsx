@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import logo from '../Assets/logo.png';
+import logo from '../Assets/Zefe_group_of_companies.png';
 import cart_icon from '../Assets/cart_icon.png';
 import { HomeContext } from '../../Context/HomeContext';
 
@@ -45,7 +45,7 @@ const Navbar = () => {
             <nav className="navbar navbar-expand-lg navbar-dark bg-light fixed-top">
                 <Link to="/">
                     <div className="logo">
-                        <img src={logo} alt="Logo" style={{ width: '50px', height: '50px' }} />
+                        <img src={logo} alt="Logo" style={{ width: '70px', height: '50px' }} />
                     </div>
                 </Link>
                 
@@ -65,7 +65,7 @@ const Navbar = () => {
                                 SHOPS
                             </Link>
                             <div className={`dropdown-menu ${showDropdown ? 'show' : ''}`} aria-labelledby="navbarDropdown">
-                                <Link className="dropdown-item" to="/Shop" onClick={handleLinkClick}>SHOP</Link>
+                                <Link className="dropdown-item" to="/Shop" onClick={handleLinkClick}>FRP DOORS</Link>
                                 <Link className="dropdown-item" to="/Pvc" onClick={handleLinkClick}>PVC DOORS</Link>
                                 <Link className="dropdown-item" to="/Upvc" onClick={handleLinkClick}>UPVC WINDOWS</Link>
                                 <div className="dropdown-divider"></div>

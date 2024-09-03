@@ -1,0 +1,109 @@
+.Doors {
+    text-align: center;
+    padding: 20px;
+    margin-top: 8%;
+  }
+  .Doors h1{
+   font-size: 34px;
+   font-weight: 600;
+   margin-bottom: 10px;
+  }
+  
+  .Doors-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .Doors-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .Doors-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    max-width: 200px; /* Ensure images don't get too large */
+  }
+  
+  .Doors-box p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    text-decoration: none!important;
+    color: #000;
+    border: none;
+  }
+  
+  .Doors-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+@media screen and (max-width: 1280px) {
+  .Doors{
+    margin-top: 5%;
+  }
+
+  .Doors-item{
+    display: flex;
+    flex-direction: grid;
+    gap: 20px;
+  }
+
+}
+
+
+@media screen and (max-width: 800px) {
+  .Doors{
+    margin: 9% auto;
+
+  }
+  .Doors h1{
+    font-size: 25px;
+    font-weight: 500;
+  }
+  .Doors-item{
+    padding: 13px;
+  }
+  .Doors-box {
+    height: max-content;
+  }
+  .Doors-item p{
+    font-size: 14px;
+    font-weight: 400;
+
+  }
+
+}
+
+
+@media screen and (max-width: 500px) {
+  .Doors{
+    margin: 14% auto;
+
+  }
+  .Doors h1{
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .Doors-item{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .Doors-item p{
+    font-size: 14px;
+    font-weight: 400;
+
+  }
+  .Doors-box {
+    height: max-content;
+  }
+
+}

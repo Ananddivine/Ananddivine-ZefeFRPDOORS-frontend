@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import './Hero.css';
-import slider_one from '../Assets/slider_one.png';
-import slider_two from '../Assets/slider_two.jpeg';
-import slider_three from '../Assets/slider_three.jpeg';
-import slider_four from '../Assets/mirror.png';
+import slider_one from '../Assets/firstslider.jpg';
+import slider_two from '../Assets/secondslider.jpg';
+import slider_three from '../Assets/therdslider.jpg';
+import slider_four from '../Assets/fourthslder.jpg';
 
 const Hero = () => {
   useEffect(() => {

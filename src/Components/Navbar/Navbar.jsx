@@ -65,10 +65,10 @@ const Navbar = () => {
                                 SHOPS
                             </Link>
                             <div className={`dropdown-menu ${showDropdown ? 'show' : ''}`} aria-labelledby="navbarDropdown">
-                                <Link className="dropdown-item" to="/Shop" onClick={handleLinkClick}>FRP DOORS</Link>
+                                {/* <Link className="dropdown-item" to="/Shop" onClick={handleLinkClick}>FRP DOORS</Link>
                                 <Link className="dropdown-item" to="/Pvc" onClick={handleLinkClick}>PVC DOORS</Link>
                                 <Link className="dropdown-item" to="/Upvc" onClick={handleLinkClick}>UPVC WINDOWS</Link>
-                                <div className="dropdown-divider"></div>
+                                <div className="dropdown-divider"></div> */}
                                 {localStorage.getItem('auth-token')
                                 ?<button onClick={()=>{localStorage.removeItem('auth-token');window.location.replace('/')}}>Log Out</button>
                             :<Link className="dropdown-item" to="/LoginSignup" onClick={handleLinkClick}>LoginSignup</Link>}

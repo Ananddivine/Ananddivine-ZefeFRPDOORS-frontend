@@ -66,6 +66,15 @@
     border-radius: 10px;
 }
 
+@media (max-width: 1980px) {
+    .offers {
+        flex-direction: row;
+        margin: auto 10px;
+        padding-top: 5px;
+        height: auto;
+    }
+}
+
 @media (max-width: 1280px) {
     .offers {
         flex-direction: row;
